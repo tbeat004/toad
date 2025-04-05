@@ -3,7 +3,7 @@ package toad.core;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 
-@Command(name = "toad", mixinStandardHelpOptions = true, version = "Toad v0.1.0",
+@Command(name = "toad", mixinStandardHelpOptions = true, version = "Toad v0.1.1",
         description = "Custom CLI tool with subcommands",
         subcommands = { ToadShellCommand.class
         })
