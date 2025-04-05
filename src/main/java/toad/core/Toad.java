@@ -4,13 +4,15 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 
 @Command(name = "toad", mixinStandardHelpOptions = true, version = "Toad v0.1.0",
-        description = "Custom CLI tool with subcommands")
+        description = "Custom CLI tool with subcommands",
+        subcommands = { ToadShellCommand.class
+        })
 
 
 public class Toad implements Runnable {
     @Override
     public void run() {
-        System.out.println("Do something idk");
+        System.out.println("Did you really expect that to work? -type 'toad -help' to see the list of available commands");
     }
 
     public static void main(String[] args) {
@@ -18,4 +20,3 @@ public class Toad implements Runnable {
         System.exit(exitCode);
     }
 }
-
