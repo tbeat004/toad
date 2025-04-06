@@ -2,11 +2,15 @@ package toad.core;
 
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
+import toad.commands.ToolCommand;
 
 @Command(name = "toad", mixinStandardHelpOptions = true, version = "Toad v0.1.1",
         description = "Custom CLI tool with subcommands",
-        subcommands = { ToadShellCommand.class
-        })
+        subcommands = {
+                ToadShellCommand.class,
+                ToolCommand.class
+          }
+        )
 
 
 public class Toad implements Runnable {
