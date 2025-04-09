@@ -9,7 +9,8 @@ import static org.fusesource.jansi.Ansi.ansi;
 
 @Command(name = "tool", description = "A collection of tools Usage: tool tool <command>",
         subcommands = {
-                HashTool.class
+                HashTool.class,
+                YtdlTool.class
 
 
         })
