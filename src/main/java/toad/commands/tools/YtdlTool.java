@@ -37,8 +37,8 @@ public class YtdlTool implements Callable<Integer> {
         if (args.isEmpty()) {
             System.out.println("   No arguments provided. Try:");
             System.out.println("   toad tool ytdl --update");
-            System.out.println("   toad tool ytdl mp3 <url>");
-            System.out.println("   toad tool ytdl mp4 <url>");
+            System.out.println("   toad tool ytdl mp3/mp4 --dir <folder> --save-dir (stores as default) --out <filename> <url>");
+            System.out.println("   NOTE: all --flags are optional ");
             return 1;
         }
 
