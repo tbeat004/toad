@@ -206,7 +206,7 @@ public class YtdlTool implements Callable<Integer> {
             }
 
             List<String> command = List.of(
-                    ytDlpPath, "-x", "--audio-format", "mp3", "-o", outPath, url
+                    ytDlpPath, "-x", "--audio-format", "mp4", "-o", outPath, url
             );
 
             return new ProcessBuilder(command).inheritIO().start().waitFor();
