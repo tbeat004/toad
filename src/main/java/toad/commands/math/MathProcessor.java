@@ -7,6 +7,7 @@ public abstract class MathProcessor {
     public MathProcessor(String expression) throws MathSyntaxException {
         if (expression == null || expression.isBlank()) {
             throw new MathSyntaxException("I can't evaluate a blank expression (I guess you could");
+
             
         }
     }
