@@ -12,6 +12,6 @@ public abstract class MathProcessor {
         }
         this.tokenizer = new ExpressionTokenizer(expression);
         this.MathTokens =  tokenizer.tokenize();
-        ExpressionValidator.validateExpression(MathTokens);
+        ExpressionValidator.validate(MathTokens);
     }
 }

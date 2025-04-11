@@ -30,7 +30,7 @@ public class ExpressionTokenizer {
             Match match = match(current);
 
             if (match == null) {
-                throw new MathSyntaxException("Invalid input at position " + position + ": " + current.charAt(0));
+                throw new MathSyntaxException("Unexpected Input at position " + position + ": " + current.charAt(0));
             }
 
             if (match.type() != null) {
