@@ -42,6 +42,14 @@ public class ExpressionTokenizer {
 
         return tokens;
     }
+
+    /**
+     * @return position (will always be at last position after tokenize() but will halt during exception
+     */
+    public int getPosition() {
+        return position + 1;
+    }
+
     private Match match(String input) {
         Matcher m;
 
