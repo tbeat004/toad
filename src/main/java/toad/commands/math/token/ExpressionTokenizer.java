@@ -1,4 +1,6 @@
-package toad.commands.math;
+package toad.commands.math.token;
+
+import toad.commands.math.MathSyntaxException;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;

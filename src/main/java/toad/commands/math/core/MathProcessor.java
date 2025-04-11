@@ -1,5 +1,10 @@
-package toad.commands.math;
+package toad.commands.math.core;
 
+
+import toad.commands.math.MathSyntaxException;
+import toad.commands.math.token.ExpressionTokenizer;
+import toad.commands.math.token.MathToken;
+import toad.commands.math.validate.ExpressionValidator;
 
 import java.util.ArrayList;
 

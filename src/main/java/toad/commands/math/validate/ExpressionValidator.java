@@ -1,4 +1,8 @@
-package toad.commands.math;
+package toad.commands.math.validate;
+
+import toad.commands.math.MathSyntaxException;
+import toad.commands.math.token.MathToken;
+import toad.commands.math.token.MathTokenType;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -14,8 +18,6 @@ public class ExpressionValidator {
     private static final MathTokenType COMMA = MathTokenType.COMMA;
     private static final MathTokenType EQUALS = MathTokenType.EQUALS;
     private static final MathTokenType EXPONENT = MathTokenType.EXPONENT;
-    private static final MathTokenType BINARY_MINUS = MathTokenType.BINARY_MINUS;
-    private static final MathTokenType UNARY_MINUS = MathTokenType.UNARY_MINUS;
 
     public static void validate(ArrayList<MathToken> tokens) throws MathSyntaxException {
         int equalsIndex = -1;
@@ -125,7 +127,7 @@ public class ExpressionValidator {
         MathToken first = tokens.get(0);
         MathToken last = tokens.get(tokens.size() - 1);
 
-        if (Set.of(OPERATOR, COMMA, EQUALS, PAREN_CLOSE).contains(first.type())) {
+        if (Set.of(OPERATOR, COMMA, EQUALS, PAREN_CLOSE).contains(first.type()) && !first.lexeme().equals("-")) {
             throw new MathSyntaxException("Expression cannot start with: " + first.lexeme());
         }
         if (Set.of(OPERATOR, COMMA, EQUALS, FUNCTION, PAREN_OPEN).contains(last.type())) {

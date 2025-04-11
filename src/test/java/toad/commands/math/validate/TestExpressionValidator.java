@@ -1,6 +1,8 @@
-package toad.commands.math;
+package toad.commands.math.validate;
 
 import org.junit.jupiter.api.Test;
+import toad.commands.math.MathSyntaxException;
+import toad.commands.math.token.ExpressionTokenizer;
 
 import static org.junit.jupiter.api.Assertions.*;
 

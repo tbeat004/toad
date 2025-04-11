@@ -1,6 +1,7 @@
-package toad.commands.math;
+package toad.commands.math.token;
 
 import org.junit.jupiter.api.Test;
+import toad.commands.math.MathSyntaxException;
 
 import java.util.List;
 
