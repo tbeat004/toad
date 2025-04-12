@@ -149,7 +149,7 @@ public class ExpressionParser {
         return false;
     }
 
-    public static int getCurrent() {
+    public int getCurrent() {
         return current;
     }
 }
