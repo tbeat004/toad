@@ -48,7 +48,7 @@ public class TestExpressionParser {
 
         ExpressionParser parser = new ExpressionParser(processed);
         MathNode root = parser.parse();
-        System.out.println("Current: " + ExpressionParser.getCurrent());
+       
         assertNotNull(root); // Basic safety
         System.out.println("AST for expression: " + expr);
         TreePrinter.print(root); // Prints the AST to console
