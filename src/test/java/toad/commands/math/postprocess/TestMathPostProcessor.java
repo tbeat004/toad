@@ -17,7 +17,7 @@ public class TestMathPostProcessor {
         List<String> lexemes = new ArrayList<>();
         for (MathToken token : tokens) {
             if (token.type() == MathTokenType.UNARY_MINUS) {
-                lexemes.add("-u");
+                lexemes.add("-");
             } else {
                 lexemes.add(token.lexeme());
             }
@@ -109,6 +109,57 @@ public class TestMathPostProcessor {
                 MathTokenType.OPERATOR,
                 MathTokenType.NUMBER,
                 MathTokenType.PAREN_CLOSE
+        );
+    }
+    @Test
+    public void testComplexImplicitMultiplicationWithEquality() throws Exception {
+        String expr = "-3x^2 + (4x - sqrt(x^2 + 1))(x + 2) = sin(x)^2 + cos(x)^2";
+        ArrayList<MathToken> tokens = new ExpressionTokenizer(expr).tokenize();
+        ExpressionValidator.validate(tokens);
+        List<MathToken> processed = MathPostProcessor.postProcess(tokens);
+
+        assertTokenTypes(processed,
+                MathTokenType.UNARY_MINUS,    // -
+                MathTokenType.NUMBER,         // 3
+                MathTokenType.OPERATOR,       // *
+                MathTokenType.VARIABLE,       // x
+                MathTokenType.EXPONENT,       // ^
+                MathTokenType.NUMBER,         // 2
+                MathTokenType.OPERATOR,       // +
+                MathTokenType.PAREN_OPEN,     // (
+                MathTokenType.NUMBER,         // 4
+                MathTokenType.OPERATOR,       // *
+                MathTokenType.VARIABLE,       // x
+                MathTokenType.BINARY_MINUS,   // -
+                MathTokenType.FUNCTION,       // sqrt
+                MathTokenType.PAREN_OPEN,     // (
+                MathTokenType.VARIABLE,       // x
+                MathTokenType.EXPONENT,       // ^
+                MathTokenType.NUMBER,         // 2
+                MathTokenType.OPERATOR,       // +
+                MathTokenType.NUMBER,         // 1
+                MathTokenType.PAREN_CLOSE,    // )
+                MathTokenType.PAREN_CLOSE,    // )
+                MathTokenType.OPERATOR,       // * (implicit between two parens)
+                MathTokenType.PAREN_OPEN,     // (
+                MathTokenType.VARIABLE,       // x
+                MathTokenType.OPERATOR,       // +
+                MathTokenType.NUMBER,         // 2
+                MathTokenType.PAREN_CLOSE,    // )
+                MathTokenType.EQUALS,         // =
+                MathTokenType.FUNCTION,       // sin
+                MathTokenType.PAREN_OPEN,     // (
+                MathTokenType.VARIABLE,       // x
+                MathTokenType.PAREN_CLOSE,    // )
+                MathTokenType.EXPONENT,       // ^
+                MathTokenType.NUMBER,         // 2
+                MathTokenType.OPERATOR,       // +
+                MathTokenType.FUNCTION,       // cos
+                MathTokenType.PAREN_OPEN,     // (
+                MathTokenType.VARIABLE,       // x
+                MathTokenType.PAREN_CLOSE,    // )
+                MathTokenType.EXPONENT,       // ^
+                MathTokenType.NUMBER          // 2
         );
     }
 }
