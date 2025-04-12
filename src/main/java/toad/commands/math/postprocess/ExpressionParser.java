@@ -12,7 +12,7 @@ import static toad.commands.math.token.MathTokenType.UNARY_MINUS;
 public class ExpressionParser {
 
     private final ArrayList<MathToken> tokens;
-    private static int current = 0;
+    private int current = 0;
 
     public ExpressionParser(ArrayList<MathToken> tokens) {
         this.tokens = tokens;
