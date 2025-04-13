@@ -106,4 +106,21 @@ public class TestExpressionParser {
         System.out.println("AST for expression: " + expr);
         TreePrinter.print(root);
     }
+
+    @Test
+    public void test6() throws MathSyntaxException {
+        String expr = "(3+4)*2";
+
+        ExpressionTokenizer tokenizer = new ExpressionTokenizer(expr);
+        ArrayList<MathToken> tokens = tokenizer.tokenize();
+        ExpressionValidator.validate(tokens);
+        ArrayList<MathToken> processed = MathPostProcessor.postProcess(tokens);
+
+        ExpressionParser parser = new ExpressionParser(processed);
+        MathNode root = parser.parse();
+
+        assertNotNull(root);
+        System.out.println("AST for expression: " + expr);
+        TreePrinter.print(root);
+    }
 }
