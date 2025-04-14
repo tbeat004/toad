@@ -41,6 +41,7 @@ public class BinaryOpNode extends MathNode{
             case "-":
                 return leftVal - rightVal;
             case "/":
+                if (rightVal == 0) {throw new ArithmeticException("Cannot divide by zero");}
                 return leftVal / rightVal;
             case "*":
                 return leftVal * rightVal;
