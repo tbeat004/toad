@@ -5,4 +5,8 @@ public abstract class MathNode {
     public abstract String toString();
 
     public abstract double evaluate();
+
+    public MathNode simplify() {
+        return this;
+    }
 }

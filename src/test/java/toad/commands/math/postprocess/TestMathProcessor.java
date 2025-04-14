@@ -8,6 +8,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestMathProcessor {
 
+    public TestMathProcessor() throws MathSyntaxException {
+    }
+
     @Test
     public void test1() throws MathSyntaxException {
         String exp = "1 + 2";
@@ -97,7 +100,7 @@ public class TestMathProcessor {
     @Test
     public void test15() throws MathSyntaxException {
         MathProcessor mp = new MathProcessor("0 ^ 0");
-        assertEquals(1, mp.evaluate()); // Math.pow(0, 0) returns 1.0
+        assertEquals(1, mp.evaluate());
     }
 
     @Test
@@ -165,4 +168,15 @@ public class TestMathProcessor {
         assertEquals(12, mp.evaluate(), 1e-10);
     }
 
+    @Test
+    public void test26() throws MathSyntaxException {
+        MathProcessor mp = new MathProcessor("1 = 1");
+        assertEquals(1, mp.evaluate());
+    }
+
+    @Test
+    public void test27() throws MathSyntaxException {
+        MathProcessor mp = new MathProcessor("1 = 2");
+        assertEquals(0, mp.evaluate());
+    }
 }
