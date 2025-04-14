@@ -16,6 +16,11 @@ public class UnaryOpNode extends MathNode{
         return op + " " + operand;
     }
 
+    @Override
+    public double evaluate() {
+        return -operand.evaluate();
+    }
+
     public String op() {
         return op;
     }

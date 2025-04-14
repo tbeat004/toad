@@ -2,7 +2,7 @@ package toad.commands.math.AbstractSyntaxTree;
 
 
 public class NumberNode extends MathNode{
-    double value;
+    private double value;
 
     public NumberNode(double v) {
         this.value = v;
@@ -12,6 +12,12 @@ public class NumberNode extends MathNode{
     public String toString() {
         return String.valueOf(value);
     }
+
+    @Override
+    public double evaluate() {
+        return getValue();
+    }
+
     public double getValue() {
         return value;
     }

@@ -22,6 +22,15 @@ public class EqualityNode extends MathNode {
         return left + " = " + right;
     }
 
+    /**
+     * Evaluates both sides of an '=' node recursively
+     * @return 1 if both sides are equal are returns 0 if both sides are NOT equal
+     */
+    @Override
+    public double evaluate() {
+        return (left.evaluate() == right.evaluate() ? 1 : 0);
+    }
+
     public MathNode left() {
         return left;
     }

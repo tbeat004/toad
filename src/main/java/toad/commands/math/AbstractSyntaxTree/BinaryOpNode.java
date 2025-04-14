@@ -7,10 +7,10 @@ public class BinaryOpNode extends MathNode{
     MathNode left;
     MathNode right;
 
-    public BinaryOpNode(MathNode left, MathToken op, MathNode right) {
+    public BinaryOpNode(MathNode left, MathToken token, MathNode right) {
         this.left = left;
         this.right = right;
-        this.op = op.lexeme();
+        this.op = token.lexeme();
     }
 
     @Override
@@ -28,5 +28,10 @@ public class BinaryOpNode extends MathNode{
 
     public MathNode right() {
         return right;
+    }
+
+    @Override
+    public double evaluate() {
+        return left.evaluate() + right.evaluate();
     }
 }

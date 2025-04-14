@@ -12,6 +12,11 @@ public class VariableNode extends MathNode{
         return name;
     }
 
+    @Override
+    public double evaluate() {
+        return 0;
+    }
+
     public String getName() {
         return name;
     }
