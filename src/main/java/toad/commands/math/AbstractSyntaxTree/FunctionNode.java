@@ -3,8 +3,8 @@ package toad.commands.math.AbstractSyntaxTree;
 import java.util.ArrayList;
 
 public class FunctionNode extends MathNode{
-    String name;
-    ArrayList<MathNode> arguments = new ArrayList<>();
+    private String name;
+    private ArrayList<MathNode> arguments = new ArrayList<>();
 
     public FunctionNode(String functionName, MathNode argument) {
         this.name = functionName.toLowerCase();
@@ -18,27 +18,29 @@ public class FunctionNode extends MathNode{
 
     @Override
     public double evaluate() {
+        double result = arguments.get(0).evaluate();
+
         switch (getName()) {
             case "sin":
-                return Math.sin(arguments.get(0).evaluate());
+                return Math.sin(result);
             case "cos":
-                return Math.cos(arguments.get(0).evaluate());
+                return Math.cos(result);
             case "tan":
-                return Math.tan(arguments.get(0).evaluate());
+                return Math.tan(result);
             case "sqrt":
-                return Math.sqrt(arguments.get(0).evaluate());
+                return Math.sqrt(result);
             case "asin":
-                return Math.asin(arguments.get(0).evaluate());
+                return Math.asin(result);
             case "acos":
-                return Math.acos(arguments.get(0).evaluate());
+                return Math.acos(result);
             case "atan":
-                return Math.atan(arguments.get(0).evaluate());
+                return Math.atan(result);
             case "log":
-                return Math.log(arguments.get(0).evaluate());
+                return Math.log(result);
             case "log10":
-                return Math.log10(arguments.get(0).evaluate());
+                return Math.log10(result);
             case "abs":
-                return Math.abs(arguments.get(0).evaluate());
+                return Math.abs(result);
 
         }
         return 0;

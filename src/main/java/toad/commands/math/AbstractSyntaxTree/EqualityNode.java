@@ -1,21 +1,14 @@
 package toad.commands.math.AbstractSyntaxTree;
 
 public class EqualityNode extends MathNode {
-    private final MathNode left;
-    private final MathNode right;
+    private MathNode left;
+    private MathNode right;
 
     public EqualityNode(MathNode left, MathNode right) {
         this.left = left;
         this.right = right;
     }
 
-    public MathNode getLeft() {
-        return left;
-    }
-
-    public MathNode getRight() {
-        return right;
-    }
 
     @Override
     public String toString() {

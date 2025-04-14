@@ -1,7 +1,7 @@
 package toad.commands.math.AbstractSyntaxTree;
 
 public class VariableNode extends MathNode{
-    String name;
+    private String name;
 
     public VariableNode(String variable) {
         this.name = variable;
