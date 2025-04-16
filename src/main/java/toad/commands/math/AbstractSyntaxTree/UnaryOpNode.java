@@ -27,4 +27,10 @@ public class UnaryOpNode extends MathNode{
     public MathNode child() {
         return operand;
     }
+
+    @Override
+    public MathNode simplify() {
+        operand = operand.simplify();
+        return super.simplify();
+    }
 }

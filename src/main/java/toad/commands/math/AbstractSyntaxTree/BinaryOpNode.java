@@ -53,4 +53,13 @@ public class BinaryOpNode extends MathNode{
 
         return -0.00000000000000000001;
     }
+
+    @Override
+    public MathNode simplify() {
+
+        left = left.simplify();
+        right = right.simplify();
+
+        return null;
+    }
 }

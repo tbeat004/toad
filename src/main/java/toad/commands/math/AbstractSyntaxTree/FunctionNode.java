@@ -53,4 +53,10 @@ public class FunctionNode extends MathNode{
     public MathNode argument() {
         return arguments.get(0);
     }
+
+    @Override
+    public MathNode simplify() {
+        MathNode argument = argument().simplify();
+        return super.simplify();
+    }
 }
