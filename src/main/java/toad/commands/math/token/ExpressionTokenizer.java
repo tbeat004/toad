@@ -15,7 +15,7 @@ public class ExpressionTokenizer {
     final Pattern numberPattern = Pattern.compile("^(\\d*\\.\\d+|\\d+)");
     final Pattern variablePattern = Pattern.compile("^(\\w)");
     final Pattern operatorPattern = Pattern.compile("^([-+/*%])");
-    final Pattern functionPattern = Pattern.compile("^(sin|cos|tan|sqrt)");
+    final Pattern functionPattern = Pattern.compile("^(sin|cos|tan|sqrt|asin|acos|atan|log|log10|abs)");
 
     //Whitespace
     final Pattern whitespacePattern = Pattern.compile("^\\s+");
