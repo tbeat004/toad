@@ -67,7 +67,7 @@ public class ExpressionParser {
         if (match(UNARY_MINUS)) {
             MathToken minus = previous();
             MathNode right = parseUnary(); // keep this recursive
-            return new UnaryOpNode(minus, right);
+            return new UnaryOpNode(minus.lexeme(), right);
         }
         return parsePrimary(); // just call primary
     }

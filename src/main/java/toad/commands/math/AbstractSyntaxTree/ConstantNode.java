@@ -14,7 +14,12 @@ public class ConstantNode extends MathNode{
     public String toString() {
         return "";
     }
-
+    public String getConstant() {
+        return constant;
+    }
+    public int getValue() {
+        return value;
+    }
     @Override
     public double evaluate() {
         return 0;

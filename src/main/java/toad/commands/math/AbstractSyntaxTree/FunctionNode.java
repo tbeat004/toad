@@ -57,6 +57,10 @@ public class FunctionNode extends MathNode{
     @Override
     public MathNode simplify() {
         MathNode argument = argument().simplify();
-        return super.simplify();
+
+        if (argument instanceof ConstantNode) return new NumberNode(this.evaluate());
+        if (argument instanceof NumberNode) return new NumberNode(this.evaluate());
+
+        return new FunctionNode(name, argument);
     }
 }

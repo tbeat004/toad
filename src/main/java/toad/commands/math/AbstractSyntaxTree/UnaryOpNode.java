@@ -1,13 +1,11 @@
 package toad.commands.math.AbstractSyntaxTree;
 
-import toad.commands.math.token.MathToken;
-
 public class UnaryOpNode extends MathNode{
     private String op;
     private MathNode operand;
 
-    public UnaryOpNode(MathToken opToken, MathNode operand) {
-        this.op = opToken.lexeme();       // Capture the operator symbol like "-"
+    public UnaryOpNode(String op, MathNode operand) {
+        this.op = op;       // Capture the operator symbol like "-"
         this.operand = operand;           // The operand (right side of unary expression)
     }
 
@@ -30,7 +28,10 @@ public class UnaryOpNode extends MathNode{
 
     @Override
     public MathNode simplify() {
-        operand = operand.simplify();
-        return super.simplify();
+        MathNode simpOperand = operand.simplify();
+
+        if (simpOperand instanceof ConstantNode constant) return new NumberNode(-constant.getValue());
+        if (simpOperand instanceof NumberNode number) return new NumberNode(-number.getValue());
+        return new UnaryOpNode("-", simpOperand);
     }
 }
