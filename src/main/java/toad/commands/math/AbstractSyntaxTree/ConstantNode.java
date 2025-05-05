@@ -20,6 +20,8 @@ public class ConstantNode extends MathNode{
     public int getValue() {
         return value;
     }
+
+
     @Override
     public double evaluate() {
         return 0;

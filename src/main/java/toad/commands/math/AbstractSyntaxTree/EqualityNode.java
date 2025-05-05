@@ -31,4 +31,11 @@ public class EqualityNode extends MathNode {
     public MathNode right() {
         return right;
     }
+
+    @Override
+    public MathNode simplify() {
+        left.simplify();
+        right.simplify();
+        return this;
+    }
 }

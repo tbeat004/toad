@@ -60,6 +60,8 @@ public class BinaryOpNode extends MathNode{
         left = left.simplify();
         right = right.simplify();
 
+        if ((left instanceof ConstantNode || left instanceof NumberNode) && right instanceof ConstantNode || right instanceof NumberNode) {}
+
         return null;
     }
 }
