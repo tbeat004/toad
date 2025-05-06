@@ -4,6 +4,7 @@ import toad.commands.math.token.MathToken;
 import toad.commands.math.token.MathTokenType;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 public class MathPostProcessor {
@@ -36,10 +37,22 @@ public class MathPostProcessor {
 
                 } else {
                     // Implicit-Multiplication Check
+                    HashSet<String> validConstants = new HashSet<>();
+                    validConstants.add("e");
+                    validConstants.add("pi");
                     if (Set.of(NUMBER, VARIABLE, PAREN_CLOSE).contains(prevToken.type()) &&
                         Set.of(VARIABLE, PAREN_OPEN, FUNCTION, NUMBER).contains(token.type())) {
-                        postProcessResult.add(new MathToken(OPERATOR, "*", token.position()));
+                        if (prevToken.type() == NUMBER && token.type() == NUMBER) {
+                            if (validConstants.contains(token.lexeme()) && !validConstants.contains(prevToken.lexeme())) {
+                                postProcessResult.add(new MathToken(OPERATOR, "*", token.position()));
+
+                            }
+                        } else {
+                            postProcessResult.add(new MathToken(OPERATOR, "*", token.position()));
+                        }
                     }
+
+
 
                     postProcessResult.add(token);
                 }

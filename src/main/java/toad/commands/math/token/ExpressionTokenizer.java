@@ -13,6 +13,7 @@ public class ExpressionTokenizer {
     private int position = 0;
 
     final Pattern numberPattern = Pattern.compile("^(\\d*\\.\\d+|\\d+)");
+    final Pattern numericConstantPattern = Pattern.compile("^(pi|e)");
     final Pattern variablePattern = Pattern.compile("^(\\w)");
     final Pattern operatorPattern = Pattern.compile("^([-+/*%])");
     final Pattern functionPattern = Pattern.compile("^(sin|cos|tan|sqrt|asin|acos|atan|log|log10|abs)");
@@ -60,8 +61,11 @@ public class ExpressionTokenizer {
         m = whitespacePattern.matcher(input);
         if (m.find()) return new Match(null, "", m.end()); // skip
 
-        // 2. Number
+        // 2. Numbers && Constants
         m = numberPattern.matcher(input);
+        if (m.find()) return new Match(MathTokenType.NUMBER, m.group(), m.end());
+
+        m = numericConstantPattern.matcher(input);
         if (m.find()) return new Match(MathTokenType.NUMBER, m.group(), m.end());
 
         // 3. Function

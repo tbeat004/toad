@@ -30,7 +30,6 @@ public class UnaryOpNode extends MathNode{
     public MathNode simplify() {
         MathNode simpOperand = operand.simplify();
 
-        if (simpOperand instanceof ConstantNode constant) return new NumberNode(-constant.getValue());
         if (simpOperand instanceof NumberNode number) return new NumberNode(-number.getValue());
         return new UnaryOpNode("-", simpOperand);
     }

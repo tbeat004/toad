@@ -5,6 +5,7 @@ import toad.commands.math.token.MathToken;
 import toad.commands.math.token.MathTokenType;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 public class ExpressionValidator {
@@ -18,6 +19,8 @@ public class ExpressionValidator {
     private static final MathTokenType COMMA = MathTokenType.COMMA;
     private static final MathTokenType EQUALS = MathTokenType.EQUALS;
     private static final MathTokenType EXPONENT = MathTokenType.EXPONENT;
+
+
 
     public static void validate(ArrayList<MathToken> tokens) throws MathSyntaxException {
         int equalsIndex = -1;
@@ -87,11 +90,20 @@ public class ExpressionValidator {
             if (prevToken != null && prevType == PAREN_OPEN && currType == PAREN_CLOSE) {
                 throw new MathSyntaxException("Empty parentheses '()' at position " + currPos);
             }
-
+            // Valid constant numbers
+            HashSet<String> validConstants = new HashSet<>();
+            validConstants.add("e");
+            validConstants.add("pi");
             // Invalid sequences
             if (prevToken != null) {
                 // NUMBER, NUMBER
-                if (prevType == NUMBER && currType == NUMBER) throw new MathSyntaxException("Invalid Syntax: NUMBER NUMBER at position: " + currPos);
+                if (prevType == NUMBER && currType == NUMBER) {
+                    // Only true if prev number is NOT a constant and curr number is
+                    if (!validConstants.contains(currToken.lexeme()) && validConstants.contains(prevToken.lexeme())) {
+                        throw new MathSyntaxException("Invalid Syntax: NUMBER NUMBER at position: " + currPos);
+                    }
+
+                }
 
                 // OPERATOR LOGIC
                 if (prevType == OPERATOR) {

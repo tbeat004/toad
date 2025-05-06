@@ -5,6 +5,7 @@ import toad.commands.math.token.MathToken;
 import toad.commands.math.token.MathTokenType;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Set;
 
 import static toad.commands.math.token.MathTokenType.UNARY_MINUS;
@@ -29,6 +30,9 @@ public class ExpressionParser {
         return switch (token.type()) {
             case NUMBER -> {
                 advance();
+                if (Objects.equals(token.lexeme(), "pi")) {yield new NumberNode(Math.PI);}
+                if (Objects.equals(token.lexeme(), "e")) {yield new NumberNode(Math.E);}
+
                 yield new NumberNode(Double.parseDouble(token.lexeme()));
             }
             case VARIABLE -> {
